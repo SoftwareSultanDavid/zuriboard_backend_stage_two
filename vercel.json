@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "backend_stage_two",
+    "builds": [
+       { "src": "app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+       { "src": "/(.*)", "dest": "/app.js" }
+    ]
+ }
