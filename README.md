@@ -37,3 +37,5 @@ Before running this API, make sure you have the following software installed:
 
 5. Usage
     You can use tools like Postman to interact with the API endpoints for testing.
+6. UML DIAGRAM LINK
+   https://shorturl.at/aiHS4
