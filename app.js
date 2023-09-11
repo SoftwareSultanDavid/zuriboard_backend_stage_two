@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const Person = require("./models/personModel");
+const Name = require("./models/nameModel");
 const mongoose = require('mongoose');
 const port = 3000;
 const cors = require("cors");
@@ -12,11 +12,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); //FOR FORM DATA INPUTS
 
-// GETTING ALL PERSON IN THE DATABASE
+// GETTING ALL Name IN THE DATABASE
 app.get('/api', async(req, res) => {
     try {
-        const person = await Person.find({});
-        res.status(200).json(person);
+        const name = await Name.find({});
+        res.status(200).json(name);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
@@ -27,8 +27,8 @@ app.get('/api/:user_id', async(req, res) => {
     try {
         // GETTING ID FROM THE PARAMETERS
         const {user_id} = req.params;
-        const person = await Person.findById(user_id);
-        res.status(200).json(person);
+        const name = await Name.findById(user_id);
+        res.status(200).json(name);
     } catch (error) {
         console.log(error.message);
         res.status(500).json({message: error.message});
@@ -36,18 +36,18 @@ app.get('/api/:user_id', async(req, res) => {
 });
 
 
-// UPDATEING THE PERSON IN THE DATABASE
+// UPDATEING THE Name IN THE DATABASE
 app.put('/api/:user_id', async(req, res) => {
     try {
         const {user_id} = req.params;
-        const person = await Person.findByIdAndUpdate(user_id, req.body);
+        const name = await Name.findByIdAndUpdate(user_id, req.body);
 
-        // Person Update Validation
-        if(!person){
-            return res.status(404).json({message: `We cannot find person with the ID ${user_id}`});
+        // Name Update Validation
+        if(!name){
+            return res.status(404).json({message: `We cannot find name with the ID ${user_id}`});
         }
-        const updatedPerson = await Person.findById(user_id);
-        res.status(200).json(updatedPerson);
+        const updatedName = await Name.findById(user_id);
+        res.status(200).json(updatedName);
 
 
     } catch (error) {
@@ -55,19 +55,19 @@ app.put('/api/:user_id', async(req, res) => {
     }
 });
 
-// DELETING A PERSON FROM THE DATABASE
+// DELETING A NAME FROM THE DATABASE
 app.delete('/api/:user_id', async(req, res) => {
     try {
         // GETTING ID FROM THE PARAMETERS
         const {user_id} = req.params;
-        const person = await Person.findByIdAndDelete(user_id);
-        if(!person){
-            return res.status(404).json({message: `We cannot find person with the ID ${user_id}`});
+        const name = await Name.findByIdAndDelete(user_id);
+        if(!name){
+            return res.status(404).json({message: `We cannot find name with the ID ${user_id}`});
         }
 
         res.status(200).json({
-            message: `Succesfully deleted the person with the ID ${user_id}`,
-            person
+            message: `Succesfully deleted the name with the ID ${user_id}`,
+            name
         });
     } catch (error) {
         console.log(error.message);
@@ -75,11 +75,11 @@ app.delete('/api/:user_id', async(req, res) => {
     }
 });
 
-// CREATING A PERSON IN THE DATABASE
+// CREATING A NAME IN THE DATABASE
 app.post('/api', async(req, res) => {
     try {
-        const person = await Person.create(req.body)
-        res.status(200).json(person);
+        const name = await Name.create(req.body)
+        res.status(200).json(name);
     } catch (error) {
         console.log(error.message);
         res.status(500).json({message: error.message});

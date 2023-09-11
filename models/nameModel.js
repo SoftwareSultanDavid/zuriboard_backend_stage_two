@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
-const personSchema = mongoose.Schema({
+const nameSchema = mongoose.Schema({
     _id: {
         type: Number,
         required: true
     },
-    person: {
+    name: {
         type: String,
         required: true
     }
 })
 
-const Person = mongoose.model('Person', personSchema);
-module.exports = Person;
+const Name = mongoose.model('Name', nameSchema);
+module.exports = Name;
