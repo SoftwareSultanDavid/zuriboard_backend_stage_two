@@ -29,11 +29,11 @@ Before running this API, make sure you have the following software installed:
     PORT=3000
 
 4. API Endpoints
-    GET /api: Get a list of all person.
-    GET /api/:id: Get a single person by ID.
-    POST /api Create a new Person.
-    PUT /api/:id: Update a person by ID.
-    DELETE /api/:id: Delete an item by ID.
+    .GET /api: Get a list of all person.
+    .GET /api/:id: Get a single person by ID.
+    .POST /api Create a new Person.
+    .PUT /api/:id: Update a person by ID.
+    .DELETE /api/:id: Delete an item by ID.
 
 5. Usage
     You can use tools like Postman to interact with the API endpoints for testing.
