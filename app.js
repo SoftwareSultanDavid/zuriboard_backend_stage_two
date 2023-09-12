@@ -35,6 +35,19 @@ app.get('/api/:user_id', async(req, res) => {
     }
 });
 
+// Dynamic searching for username
+app.get('/api/name/:user_name', async(req, res) => {
+    try {
+        // GETTING ID FROM THE PARAMETERS
+        const {user_name} = req.params;
+        const name = await Name.findOne({"name": user_name});
+        res.status(200).json(name);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({message: error.message});
+    }
+});
+
 
 // UPDATEING THE Name IN THE DATABASE
 app.put('/api/:user_id', async(req, res) => {
@@ -54,6 +67,7 @@ app.put('/api/:user_id', async(req, res) => {
         res.json(500).json({message: error.message});
     }
 });
+
 
 // DELETING A NAME FROM THE DATABASE
 app.delete('/api/:user_id', async(req, res) => {
