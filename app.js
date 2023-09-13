@@ -51,7 +51,10 @@ app.put('/api/:user_id', async(req, res) => {
             return res.status(404).json({message: `We cannot find name with the ID ${user_id}`});
         }
         const updatedName = await Name.findById(user_id);
-        res.status(200).json(updatedName);
+        res.status(200).json({
+            message: `successfully updated the name with the ID ${user_id}`,
+            updatedName
+        });
     } catch (error) {
         res.json(500).json({message: error.message});
     }
