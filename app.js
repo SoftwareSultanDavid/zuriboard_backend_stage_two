@@ -48,9 +48,23 @@ app.get('/api/:user_id', async(req, res) => {
     try {
         // GETTING ID FROM THE PARAMETERS
         const {user_id} = req.params;
-        const name = await Name.findById(user_id);
+        const name = await Name.findById({_id: user_id});
         res.status(200).json(name);
+    } catch (error) {// CREATING A NAME IN THE DATABASE
+app.post('/api', async(req, res) => {
+    try {
+        const name = await Name.create(req.body)
+        res.status(200).json({
+            message: "User created successfully",
+            name
+        });
     } catch (error) {
+        console.log(error.message);
+        res.status(500).json({message: error.message});
+    }
+});
+
+
         console.log(error.message);
         res.status(500).json({message: error.message});
     }
@@ -61,7 +75,7 @@ app.get('/api/:user_id', async(req, res) => {
 app.put('/api/:user_id', async(req, res) => {
     try {
         const {user_id} = req.params;
-        const name = await Name.findByIdAndUpdate(user_id, req.body);
+        const name = await Name.findByIdAndUpdate({_id: user_id}, req.body);
         // Name Update Validation
         if(!name){
             return res.status(404).json({message: `We cannot find name with the ID ${user_id}`});
@@ -82,7 +96,7 @@ app.delete('/api/:user_id', async(req, res) => {
     try {
         // GETTING ID FROM THE PARAMETERS
         const {user_id} = req.params;
-        const name = await Name.findByIdAndDelete(user_id);
+        const name = await Name.findByIdAndDelete({_id: user_id});
         if(!name){
             return res.status(404).json({message: `We cannot find name with the ID ${user_id}`});
         }
