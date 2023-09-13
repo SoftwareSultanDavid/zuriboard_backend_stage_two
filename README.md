@@ -28,15 +28,14 @@ Before running this API, make sure you have the following software installed:
     MONGODB_URI=mongodb://localhost:27017/your-database
     PORT=3000
 
-4. API Endpoints
+4. API Endpoints(NO QUERY PARAMETER ONLY PATH PARAMETER)
     1. GET /api: Get a list of all person.
-    2. GET /api/:id: Get a single person by ID.
-    3. GET /api/name/:user_name: Get a single person by there name eg(/api/name/elonmusk)
+    2. GET /api/:id: Get a single person by ID. PATH PARAMETER NOT QUERY......(api/1)
     4. POST /api Create a new Person.
-    5. PUT /api/:id: Update a person by ID.
-    6. DELETE /api/:id: Delete an item by ID.
+    5. PUT /api/:id: Update a person by ID. PATH PARAMETER NOT QUERY......(api/1)
+    6. DELETE /api/:id: Delete an item by ID. PATH PARAMETER NOT QUERY......(api/1)
 
 5. Usage
     You can use tools like Postman to interact with the API endpoints for testing.
 6. UML DIAGRAM LINK
-   https://shorturl.at/vBL17
+   https://shorturl.at/hklqS
